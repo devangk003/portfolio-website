@@ -1,0 +1,234 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Product Sans', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Background Animation */
+.animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Ensure it stays behind the main content */
+    overflow: hidden;
+}
+
+.line {
+    width: 10px;
+    height: 100vh; /* Full viewport height to cover the screen */
+    position: absolute;
+    top: 0;
+    animation: bg-animation 3s linear infinite alternate-reverse;
+}
+
+/* Define multiple lines with different colors and starting positions */
+.line1 {
+    left: 0;
+    background-color: rgba(255, 0, 13, 0.7); /* Teal */
+    animation-delay: 0s;
+}
+
+
+/* Animation Keyframes */
+@keyframes bg-animation {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(0, -200vh);
+    }
+}
+
+/* Navigation Bar */
+.navbar {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 15px;
+    gap: 15%;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.navbar .box a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.navbar .box a:hover {
+    color: #22c1c3; /* Highlight color on hover */
+}
+
+/* Curved Transition SVG */
+.curve {
+    width: 100%;
+    display: block;
+    transform: rotate(180deg); /* Rotate the curve for downward transition */
+    animation: curve-animation 6s infinite linear ;
+}
+
+@keyframes curve-animation {
+    0% {
+        transform: translateY(0) rotate(180deg);
+    }
+    50% {
+        transform: translateY(20px) rotate(180deg);
+    }
+    100% {
+        transform: translateY(0) rotate(180deg);
+    }
+}
+
+/* Main Content */
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    margin-top: 100px; /* Space below the navbar */
+    padding: 0 7vw;
+}
+
+/* About Section */
+.about {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.about h3 {
+    padding-bottom: 20px;
+    font-size: 40px;
+    color: #333;
+}
+
+.about .profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.about p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.about p b {
+    color: #22c1c3;
+}
+
+/* Projects Section */
+.projecthead {
+    text-align: center;
+    font-size: 35px;
+    color: #333;
+    margin-bottom: 50px;
+}
+
+.projects {
+    display: grid;
+    gap: 40px;
+    justify-items: center;
+    padding-bottom: 50px;
+}
+
+.projects .pro {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.projects .pro h3 {
+    font-size: 25px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.projects .pro p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.projects .pro ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.projects .pro ul li {
+    margin-bottom: 10px;
+}
+
+/* Connect Section */
+.connect {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.connect h3 {
+    font-size: 35px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.links a {
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.links a:hover {
+    transform: scale(1.1);
+}
+
+.links img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .links {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .projects {
+        grid-template-columns: 1fr;
+    }
+}

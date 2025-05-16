@@ -1,107 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devang's Dome</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Devang Kumawat - Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #121212;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        /* Navbar */
+        .navbar {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 0;
+        }
+        .navbar-brand, .nav-link {
+            color: #ffffff !important;
+            font-weight: 400;
+        }
+        .nav-link:hover {
+            color: #00ff88 !important;
+        }
+        .navbar-toggler {
+            border-color: #ffffff;
+        }
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(45deg, #0a0a0a, #1c2526);
+            padding: 50px 0;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+        }
+        .hero .typed-text {
+            color: #00ff88;
+            font-size: 2.5rem;
+            font-weight: 400;
+        }
+        .hero img {
+            max-width: 300px;
+            border-radius: 50%;
+            border: 5px solid #00ff88;
+        }
+        .btn-custom {
+            background: #00ff88;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-custom:hover {
+            background: #00cc70;
+            color: #000;
+        }
+        /* About Section */
+        .about, .skills, .projects, .certifications, .contact {
+            padding: 80px 0;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #00ff88;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .about img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        .skill-badge {
+            background: #1c2526;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s, background 0.3s;
+        }
+        .skill-badge:hover {
+            transform: translateY(-5px);
+            background: #00ff88;
+            color: #000;
+        }
+        .skill-badge i {
+            font-size: 1.2rem;
+        }
+        /* Projects Section */
+        .project-card {
+            background: #1c2526;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .project-card .card-body {
+            padding: 20px;
+        }
+        /* Certifications Section */
+        .certification-list {
+            list-style: none;
+            padding: 0;
+        }
+        .certification-list li {
+            background: #1c2526;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .certification-list a {
+            color: #00ff88;
+            text-decoration: none;
+        }
+        .certification-list a:hover {
+            text-decoration: underline;
+        }
+        /* Contact Section */
+        .contact {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+        }
+        .social-icons a {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+            color: #00ff88;
+        }
+        .contact-info p {
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            padding: 20px 0;
+            text-align: center;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero .typed-text {
+                font-size: 1.8rem;
+            }
+            .hero img {
+                max-width: 200px;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .skill-badge {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+            .certification-list li {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Devang Kumawat</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <!-- Background Animation -->
-    <div class="animation">
-        <!-- Define multiple lines for seamless diagonal animation -->
-        <div class="line line1"></div>
-    </div>
-
-    <!-- Navigation Bar -->
-    <section class="navbar">
-        <div class="box box1"><a href="#first">Yo</a></div>
-        <div class="box box2"><a href="#projects">Projects</a></div>
-        <div class="box box3"><a href="#connect">Let's Connect</a></div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6" data-aos="fade-right">
+                    <h1>Hi, I'm Devang Kumawat</h1>
+                    <h2>I'm a <span class="typed-text"></span></h2>
+                    <p class="lead my-4">B.E. Information Science student, passionate about AI and Full-Stack Development.</p>
+                    <a href="https://drive.google.com/file/d/1Ag-PpcgiZlLyRdtWbekOUhHc4jVeXtKj/view?usp=sharing" class="btn btn-outline-light">Download Resume</a>
+                </div>
+                <div class="col-md-6 text-center" data-aos="fade-left">
+                    <img src="images\herosection.jpg" alt="Devang Kumawat" class="img-fluid">
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Main Content -->
-    <div class="content">
-        <!-- First Section -->
-        <div class="first" id="first">
-            <div class="about">
-                <h3>Hey! It's me Devang</h3>
-                <img src="https://media.licdn.com/dms/image/v2/D5603AQF7QkwShLuL8Q/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1721133245499?e=1731542400&v=beta&t=CecUYoc-1vu_kszumNPju7OVCw4HaKF9orA0lBsY4ys"
-                    alt="DP" class="profile">
-                <p>Engineering Student at BMS Institute of Technology | Aspiring Web Developer & Software Developer
-                    Proficient in C and Java | CGPA 8.28</p>
-                <br>
-                <p>Wanna Talk about my <b>Skills</b></p>
-                <p>Wellllll............ I am still working on those.</p>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="row">
+                <div class="col-md-6" data-aos="fade-right">
+                    <img src="images/herosection.jpg" alt="About Image" class="img-fluid" sizes="400x400">
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <h3>Who Am I?</h3>
+                    <p>I'm a B.E. Information Science student, specializing in AI, Machine Learning, and Full-stack Development.</p>
+                    <p>My projects, like <b>Nidra</b> and <b>Sunday Insurance</b>, showcase my ability to build innovative solutions using Python, TensorFlow, and modern web technologies. I thrive on solving complex problems and am eager to contribute to impactful tech projects.</p>
+                    <a href="https://drive.google.com/file/d/1Ag-PpcgiZlLyRdtWbekOUhHc4jVeXtKj/view?usp=sharing" class="btn btn-custom">Download Resume</a>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Curved Transition Between Yo and Projects -->
-        <svg class="curve" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#f0f0f0" fill-opacity="1"
-                d="M0,160L60,176C120,192,240,224,360,208C480,192,600,128,720,112C840,96,960,128,1080,149.3C1200,171,1320,181,1380,186.7L1440,192V320H1380C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320H0Z">
-            </path>
-        </svg>
-
-        <!-- Projects Section -->
-        <h3 class="projecthead" id="projects">Projects</h3>
-        <div class="projects">
-
-            <div class="pro project1">
-                <h3>Customer Reward Points System: Perkémon</h3>
-                <P><a href=" https://github.com/devangk003/Customer-Reward-Points-System-JAVA-Perkemon">GitHubRepo</a></P>
-                <p>Perkemon is a Java-based customer loyalty program designed to track customer transactions and reward
-                    points based on spending thresholds. The program features a tier-based reward system to incentivize
-                    customer loyalty, providing different reward percentages and benefits as customers progress through
-                    four tiers: Beginner, Intermediate, Elite, and Legend.</p>
-            </div>
-
-            <div class="pro project2">
-                <h3>India Post AI-Powered Postal Solution to Reduce Human Error</h3>
-                <P>SmartIndiaHackathon 2024</P>
-                <p>
-                <ul>
-                    <li>Led the development of an AI-powered system to automate and optimize address entry, PIN code
-                        suggestion, and post office management for India-Post by working closely with teammates and mentor
-                        to ensure alignment with project goals.</li>
-                    <li>Coordinated brainstorming sessions to drive innovative ideas, ensuring technical feasibility
-                        while aligning with real-world postal service needs.</li>
-                </ul>
-                <br>
-                <p><b>Technologies Used:</b> Python, BERT AI, DIGIPIN, HTML5, CSS3, JavaScript</p>
-                </p>
-            </div>
-            <!-- Add more projects as needed -->
-        </div>
-
-        <!-- Curved Transition Between Projects and Connect -->
-        <svg class="curve" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#f0f0f0" fill-opacity="1"
-                d="M0,160L60,176C120,192,240,224,360,208C480,192,600,128,720,112C840,96,960,128,1080,149.3C1200,171,1320,181,1380,186.7L1440,192V320H1380C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320H0Z">
-            </path>
-        </svg>
-
-        <!-- Connect Section -->
-        <div class="connect" id="connect">
-            <h3>Let's Connect</h3>
-            <div class="links">
-                <a href="https://www.linkedin.com/in/devangk003/" target="_blank" rel="noopener noreferrer">
-                    <img src="https://static.vecteezy.com/system/resources/previews/018/930/480/non_2x/linkedin-logo-linkedin-icon-transparent-free-png.png"
-                        alt="LinkedIn">
-                </a>
-                <a href="https://github.com/devangk003" target="_blank" rel="noopener noreferrer">
-                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
-                </a>
-                <a href="https://leetcode.com/u/devangk003/" target="_blank" rel="noopener noreferrer">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" alt="LeetCode">
-                </a>
-                <!-- Add more links as needed -->
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-container">
+                <div class="skill-badge" data-aos="fade-up"><i class="fab fa-python"></i> Python</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="50"><i class="fab fa-java"></i> Java</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="100"><i class="fab fa-cuttlefish"></i> C++</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="150"><i class="fab fa-html5"></i> HTML5</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="200"><i class="fab fa-css3-alt"></i> CSS3</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="250"><i class="fab fa-js"></i> JavaScript</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="300"><i class="fab fa-react"></i> React</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="350"><i class="fab fa-node-js"></i> Node.js</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-brain"></i> TensorFlow</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="450"><i class="fas fa-brain"></i> Keras</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="500"><i class="fas fa-brain"></i> Scikit-learn</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="550"><i class="fas fa-comment"></i> NLP</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="600"><i class="fas fa-table"></i> Pandas</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="650"><i class="fas fa-table"></i> NumPy</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="700"><i class="fas fa-chart-line"></i> Matplotlib</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="750"><i class="fas fa-chart-line"></i> Seaborn</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="800"><i class="fas fa-database"></i> PostgreSQL</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="850"><i class="fas fa-database"></i> MongoDB</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="900"><i class="fas fa-database"></i> MySQL</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="950"><i class="fab fa-git-alt"></i> Git</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="1000"><i class="fas fa-tasks"></i> Agile</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="1050"><i class="fas fa-tasks"></i> Scrum</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="1100"><i class="fas fa-code"></i> Data Structures</div>
+                <div class="skill-badge" data-aos="fade-up" data-aos-delay="1150"><i class="fas fa-code"></i> Algorithms</div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="fade-up">
+                    <div class="project-card">
+                        <!-- <img src="https://via.placeholder.com/300x200" alt="Nidra"> -->
+                        <div class="card-body">
+                            <h5>Nidra: Sleep Stage Classification AI</h5>
+                            <p>Developed a CNN + LSTM model to classify sleep stages from audio, achieving 70% accuracy and reducing costs by 99%. Trained on 28GB+ audio data using Python Data Generators.</p>
+                            <a href="https://github.com/devangk003/Nidra" class="btn btn-custom">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-card">
+                        <!-- <img src="https://via.placeholder.com/300x200" alt="SundayInsurance"> -->
+                        <div class="card-body">
+                            <h5>SundayInsurance: AI Vehicle Insurance</h5>
+                            <p>Built an AI recommendation engine with web scraping API, reducing decision time to under 5 minutes. Used ML to optimize policy selection based on coverage and cost.</p>
+                            <a href="https://github.com/devangk003/SundayInsurance" class="btn btn-custom">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-card">
+                        <!-- <img src="https://via.placeholder.com/300x200" alt="Developer Toolbox"> -->
+                        <div class="card-body">
+                            <h5>Developer Toolbox</h5>
+                            <p>Created a full-stack app with 6 AI tools (e.g., Text Summarizer, ChatBot) using React, Node.js, and OpenAI API. Enhanced security with JWT, cutting unauthorized access by 60%.</p>
+                            
+                            <a href="https://github.com/devangk003" class="btn btn-custom">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </ poste>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <ul class="certification-list">
+                <li data-aos="fade-up">
+                    <span>Programming Essentials in Python - Cisco Networking Academy</span>
+                    <a href="https://www.credly.com/badges/b2173184-9d99-408d-9377-49e9f3e276f1/public_url" target="_blank">View Certificate</a>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="100">
+                    <span>Introduction to Data Science - Cisco Networking Academy</span>
+                    <a href="https://www.credly.com/badges/10f0558f-16f9-41c5-b35b-33ad8004a369/public_url" target="_blank">View Certificate</a>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="200">
+                    <span>Software Engineering Fundamentals - Software Development and Testing</span>
+                    <a href="https://drive.google.com/file/d/17w1n1uA_mVIwXjfIjUIZWc6Ruc4RfKGR/view?usp=sharing" target="_blank">View Certificate</a>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="300">
+                    <span>NoSQL Course Training - MongoDB Developer</span>
+                    <a href="https://drive.google.com/file/d/1WqiS2Wl2f06wF-km27X4GX7I8wVn7EK1/view?usp=sharing" target="_blank">View Certificate</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container text-center">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-info">
+                <h4>Connect with Me</h4>
+                <div class="social-icons my-4">
+                    <a href="https://github.com/devangk003" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/devangk003" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <p>Email: oyeeKumawat@gmail.com</p>
+                <p>Phone: +91-9602089889</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 Devang Kumawat. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Initialize Typed.js
+        var typed = new Typed('.typed-text', {
+            strings: ['Web Developer', 'Software Engineer', 'AI/ML Engineer', 'Data Analyst'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true
+        });
+
+        // Smooth scrolling for nav links
+        document.querySelectorAll('.nav-link').forEach(anchor => {
+             anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                document.getElementById(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close navbar on mobile
+                const navbar = document.querySelector('#navbarNav');
+                if (navbar.classList.contains('show')) {
+                    navbar.classList.remove('show');
+                }
+            });
+        });
+    </script>
 </body>
-
 </html>
